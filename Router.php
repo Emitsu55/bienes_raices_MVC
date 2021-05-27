@@ -10,15 +10,25 @@ class Router {
     public function get($url, $fn) { //Toma la url actual y la funcion asociada a esa url
         $this->rutasGET[$url] = $fn;
     } 
+    public function post($url, $fn) { //Toma la url actual y la funcion asociada a esa url
+        $this->rutasPOST[$url] = $fn;
+    } 
 
     public function comprobarRutas()
     {
+        // debuguear($_SERVER);
         $url_actual = $_SERVER['PATH_INFO'] ?? '/';
         $metodo = $_SERVER['REQUEST_METHOD'];
+
+        // debuguear($url_actual);
         
         if($metodo === 'GET') {
 
             $fn = $this->rutasGET[$url_actual] ?? null;
+            
+        } else {
+    
+            $fn = $this->rutasPOST[$url_actual] ?? null;
             
         }
 

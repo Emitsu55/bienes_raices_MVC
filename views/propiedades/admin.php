@@ -1,38 +1,5 @@
 <?php 
-//Muestra mensaje condicional
-$resultado = $_GET['resultado'] ?? null; //el ?? le asigna nulo en caso de no existir 
 
-// if($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-//     $id = $_POST['id'];
-//     $id = filter_var($id, FILTER_VALIDATE_INT);
-
-//     if($id) {
-
-//         $tipo = $_POST['tipo'];
-
-//         if(validarTipoContenido($tipo)){
-            
-//             if($_POST['tipo'] === 'propiedad') {
-//                 //traer el objeto completo
-//                 $propiedad = Propiedad::find($id);
-        
-//                 //Eliminar la propiedad
-//                 $propiedad->eliminar();
-                
-//             } else if($_POST['tipo'] === 'vendedor') {
-//                 //traer el objeto completo
-//                 $vendedor = Vendedor::find($id);
-        
-//                 //Eliminar el vendedor
-//                 $vendedor->eliminar();
-                
-//             }
-//         }
-
-//     }
-
-// }
 
 if($resultado) { ?>
     <main class="contenedor seccion">
@@ -76,13 +43,13 @@ if($resultado) { ?>
                     <input type="hidden" name="tipo" value="propiedad">
                     <input type="submit" class="btn-rojo-block" value="Eliminar Registro">
                     </form>
-                    <a href="/admin/propiedades/actualizar.php?id=<?php echo $propiedad->id; ?>" class="btn-verde-block">Actualizar</a>
+                    <a href="./actualizar?id=<?php echo $propiedad->id; ?>" class="btn-verde-block">Actualizar</a>
                 </td>
             </tr>
         <?php endforeach; ?>    
         </tbody>
     </table>
-    <a href="/admin/propiedades/crear.php" class="btn btn-verde">Nueva Propiedad</a>
+    <a href="./crear" class="btn btn-verde">Nueva Propiedad</a>
 
     <table class="propiedades">
 
