@@ -1,4 +1,3 @@
-
 <main class="contenedor seccion">
     <h1>Actualizar Propiedad</h1>
 
@@ -16,7 +15,7 @@
 
         <?php include __DIR__ . '/formulario.php'; ?>
 
-        <input type="submit" class="btn btn-verde" value="Actualizar Propiedad">
+        <input type="submit" class="btn btn-verde" value="Actualizar Vendedor">
 
     </form>
 

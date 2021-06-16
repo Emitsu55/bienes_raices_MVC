@@ -99,11 +99,6 @@ class PropiedadController
 
                 //insertar a la base de datos 
                 $resultado = $propiedad->guardar();
-
-                //Mensaje de exito
-                if ($resultado) {
-                    header('Location: /admin?resultado=1');  //query string
-                }
             }
         }
 
@@ -118,13 +113,7 @@ class PropiedadController
     public static function actualizar(Router $router)
     {
 
-        //Validar url por id válido
-        $id = $_GET['id'];
-        $id = filter_var($id, FILTER_VALIDATE_INT); //Valida que la variable sea un entero
-
-        if (!$id) {
-            header('Location: /admin');
-        }
+        $id = validarORedir('/panel/admin');
 
         $propiedad = Propiedad::find($id);
 
@@ -169,12 +158,31 @@ class PropiedadController
             }
         }
 
-
-
         $router->render('propiedades/actualizar', [
             'propiedad' => $propiedad,
             'vendedores' => $vendedores,
             'errores' => $errores
-        ]);
+            ]);
+    
     }
+       
+        public static function eliminar() 
+        {
+            if($_SERVER['REQUEST_METHOD'] === 'POST') {
+                //VALIDAR ID
+                $id = $_POST['id'];
+                $id = filter_var($id, FILTER_VALIDATE_INT);
+                
+                if($id){
+                    $tipo = $_POST['tipo'];
+                    if(validarTipoContenido($tipo)){
+                        $propiedad = Propiedad::find($id);
+                        $propiedad->eliminar();
+                    }
+                }
+            }
+            
+    
+        }
 }
+    

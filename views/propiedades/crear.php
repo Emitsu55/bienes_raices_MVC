@@ -12,7 +12,7 @@
     ?> 
 
 
-    <form action="./crear" class="formulario" method="POST" enctype="multipart/form-data">
+    <form action="/propiedades/crear" class="formulario" method="POST" enctype="multipart/form-data">
 
         <?php include __DIR__ . '/formulario.php'; ?>
 
@@ -20,6 +20,6 @@
 
     </form>
 
-    <a href="./admin" class="btn btn-verde">Volver</a>
+    <a href="/admin" class="btn btn-verde">Volver</a>
 </main>
 

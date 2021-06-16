@@ -6,6 +6,7 @@
 define('TEMPLATES_URL', __DIR__ . '/templates');
 define('FUNCIONES_URL', __DIR__ . 'funciones.php');
 define('CARPETA_IMAGENES', $_SERVER['DOCUMENT_ROOT'] . '/imagenes/');
+define('BUILD', $_SERVER['DOCUMENT_ROOT'] . '/build/');
 
 
 function incluirTemplate(string $nombre, bool $inicio = false) {
@@ -19,6 +20,19 @@ function estaAutenticado() {
     //     header('Location /');
     // }
 
+}
+
+function validarORedir(string $url) {
+      //Validar url por id válido
+      $id = $_GET['id'];
+      $id = filter_var($id, FILTER_VALIDATE_INT); //Valida que la variable sea un entero
+
+      if (!$id) {
+          header("Location: ${url}");
+      }
+
+      return $id;
+    
 }
 
 function debuguear($variable) {

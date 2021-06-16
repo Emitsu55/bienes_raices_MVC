@@ -49,7 +49,7 @@ class ActiveRecord
         
         //Mensaje de exito
         if($resultado) {
-            header('Location: /admin?resultado=1');
+            header('Location: /panel/admin?resultado=1');
         }
     }
 
@@ -70,7 +70,7 @@ class ActiveRecord
         $resultado = self::$db->query($query);
 
         if ($resultado) {
-            header('Location: /admin?resultado=2');  //query string
+            header('Location: /panel/admin?resultado=2');  //query string
         }
     }
 
@@ -82,7 +82,7 @@ class ActiveRecord
 
         if($resultado) {
             $this->borrarImagen();
-            header('Location: /admin?resultado=3');
+            header('Location: /panel/admin?resultado=3');
         }
     }
 
