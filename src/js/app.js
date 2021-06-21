@@ -70,9 +70,6 @@ function mostrarMetodosContacto(e) {
         let input = document.createElement('INPUT');
         contactoDiv.innerHTML = `
 
-        
-                       
-        <label for="telefono">Teléfono</label>
         <input name="contacto[telefono]" type="phone" id="telefono" placeholder="Tu Telefono...">
 
         <p>Elija la fecha y la hora de contacto</p>
@@ -87,7 +84,6 @@ function mostrarMetodosContacto(e) {
     } else if(e.target.value === 'Email') {
         contactoDiv.innerHTML = `
                
-        <label for="email">Email</label>
         <input require name="contacto[email]" id="email" type="email" placeholder="Tu Email...">
 
         `;

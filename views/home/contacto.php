@@ -1,5 +1,13 @@
 <main class="contenedor">
         <h1>Contacto</h1>
+
+        <?php if($mensaje) {
+            echo '<p class= "alerta success">' . $mensaje . '</p>';
+        }
+        
+        
+        ?>
+
         <picture>
             <source srcset="/build/img/destacada3.webp" type="image/webp">
             <source srcset="/build/img/destacada3.jpg" type="image/jpeg">
@@ -46,9 +54,7 @@
                 </div>
 
                 <div id="contacto"></div>
-               
 
-            
             </fieldset>
             
             <input type="submit" class="btn-verde">

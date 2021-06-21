@@ -50,7 +50,8 @@ class PropiedadController
 
             'propiedades' => $propiedades,
             'vendedores' => $vendedores,
-            'resultado' => $resultado
+            'resultado' => $resultado,
+            'inicio' => false
 
         ]);
     }
@@ -105,7 +106,8 @@ class PropiedadController
         $router->render('propiedades/crear', [
             'propiedad' => $propiedad,
             'vendedores' => $vendedores,
-            'errores' => $errores
+            'errores' => $errores,
+            'inicio' => false
         ]);
     }
 
@@ -161,7 +163,8 @@ class PropiedadController
         $router->render('propiedades/actualizar', [
             'propiedad' => $propiedad,
             'vendedores' => $vendedores,
-            'errores' => $errores
+            'errores' => $errores,
+            'inicio' => false
             ]);
     
     }

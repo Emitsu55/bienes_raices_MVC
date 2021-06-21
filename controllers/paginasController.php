@@ -72,6 +72,7 @@ class PaginasController
 
     public static function contacto(Router $router)
     {
+        $mensaje = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -105,8 +106,21 @@ class PaginasController
             $contenido = '<html>';
             $contenido .='<p>Tienes un nuevo mensaje</p>'; 
             $contenido .='<p>Nombre: ' . $respuestas['nombre'] . '</p>'; 
-            $contenido .='<p>Mensaje: ' . $respuestas['mensaje'] . '</p>'; 
-            $contenido .='<p>Nombre: ' . $respuestas['nombre'] . '</p>'; 
+            $contenido .='<p>Mensaje: ' . $respuestas['mensaje'] . '</p>';
+            $contenido .='<p>Transaccion: ' . $respuestas['tipo'] . '</p>'; 
+            $contenido .='<p>Precio/Presupuesto: ' . '$' . $respuestas['precio'] . '</p>'; 
+            //Campos enviados de forma condicional
+            if($respuestas['contacto'] === 'Teléfono') {
+                //Enviar el campo de telefono
+                $contenido .='<p>Forma de contacto elegida</p>'; 
+                $contenido .='<p>Teléfono: '. $respuestas['telefono'] . '</p>'; 
+                $contenido .='<p>Fecha a contactar: '. $respuestas['fecha'] . '</p>'; 
+                $contenido .='<p>Franja Horaria: '. $respuestas['hora'] . '</p>'; 
+            } else {
+                //Enviar el campo de email
+                $contenido .='<p>Forma de contacto elegida</p>'; 
+                $contenido .='<p>Email: ' . $respuestas['email'] . '</p>'; 
+            }
             $contenido .= '</html>';
 
             $mail->Body = $contenido;
@@ -114,15 +128,15 @@ class PaginasController
 
             //Enviar el email
             if ($mail->send()) {
-                echo 'Mensaje enviado correctamente';
+                $mensaje = 'Mensaje enviado correctamente';
             } else {
-                debuguear($mail);
-                echo 'El mensaje no se pudo enviar';
+                $mensaje = 'El mensaje no se pudo enviar';
             }
         }
 
         $router->render('home/contacto', [
-            'inicio' => false
+            'inicio' => false,
+            'mensaje' => $mensaje
         ]);
     }
 }
